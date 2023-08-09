@@ -13,7 +13,7 @@
             {
                 if (Count != 0)
                 {
-                    return (Sum / Count);
+                    return (double)Math.Round((Sum / Count),2);
                 }
                 else
                 {

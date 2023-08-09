@@ -31,9 +31,7 @@ namespace ConsoleAppCert
                 bool Finish = false;
                 while (!Finish)
                 {
-
                     var userDecision = Console.ReadLine().ToUpper().ToUpper();
-
                     switch (userDecision)
                     {
                         case "1":
@@ -51,9 +49,7 @@ namespace ConsoleAppCert
                         default:
                             Console.Write("\aBłędny wybór, wybierz ponownie opcję: 1, 2 lub Q:  ");
                             continue;
-
                     }
-
                 }
             }
         }
@@ -75,14 +71,8 @@ namespace ConsoleAppCert
         {
             ConsoleHeadlineText();
             string s = $"Dla {name} {surname} lat {age} wprowadzaj oceny z zakresu: ";
-            if (age > 9)
-            {
-                s += "'1-6'";
-            }
-            else
-            {
-                s += "'ABCDEF'";
-            }
+            if (age > 9) { s += "'1-6'"; }
+            else { s += "'ABCDEF'"; }
             Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
             ConsoleMessageColor(ConsoleColor.Green, s);
             Console.WriteLine();
@@ -196,9 +186,5 @@ namespace ConsoleAppCert
             Console.WriteLine("zakończono wyświetlanie statystyk Ucznia, wciśnij dowolny klawisz, aby przejść do wprowadzania kolejnego ucznia");
             Console.ReadKey();
         }
-
-
-
-
     }
 }

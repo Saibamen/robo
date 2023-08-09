@@ -3,7 +3,6 @@
     public abstract class StudentBase : Person, IStudent
     {
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
-
         public abstract event GradeAddedDelegate GradeAdded;
 
         public override string Name { get; set; }
