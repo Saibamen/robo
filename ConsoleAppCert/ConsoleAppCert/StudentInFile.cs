@@ -58,7 +58,7 @@
             Console.WriteLine("oceny cząstkowe: ");
             foreach (var item in grades)
             {
-                Console.Write($"{item}, ");
+                Console.Write($"{item:N2}, ");
             }
             Console.WriteLine();
         }

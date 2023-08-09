@@ -54,7 +54,6 @@ namespace ConsoleAppCert
             }
         }
 
-
         private static void ConsoleHeadlineText()
         {
             Console.ResetColor();
@@ -125,7 +124,7 @@ namespace ConsoleAppCert
             ConsoleMessageColor(ConsoleColor.Magenta, "Oceny są wprowadzane do pamięci komutera (możliwość zapisu po zakończeniu wprowadzania)");
             EnterGrade(student);
             DisplayStatistics(student);
-            ConsoleMessageColor(ConsoleColor.DarkRed, "\aCzy zapisać te wyniki do pliku 'txt'? T - tak");
+            ConsoleMessageColor(ConsoleColor.DarkRed, "\aCzy zapisać wprowadzone oceny do pliku 'txt'? T - tak");
             string inputUser = Console.ReadLine().ToUpper().Trim();
             if (inputUser == "T")
             {
