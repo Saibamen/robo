@@ -15,7 +15,7 @@ namespace ConsoleAppCert.Test
             studentTest.AddGrade("5+");
             studentTest.AddGrade("6-");
             studentTest.AddGrade(4.5);
-            studentTest.AddGrade(4);
+            studentTest.AddGrade(+4);           //trakotwane jako double a nie string!!!
 
             var result = studentTest.GetStatistics();
 
