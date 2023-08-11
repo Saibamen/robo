@@ -37,7 +37,6 @@ namespace ConsoleAppCert
                         case "1":
                             AddGradersToMemory(name, surname, age);
                             Finish = true;
-
                             break;
                         case "2":
                             AddGradersToFile(name, surname, age);
@@ -66,6 +65,7 @@ namespace ConsoleAppCert
             Console.WriteLine("użycie 'q' powoduje zakończenie wprowadzania");
             Console.WriteLine();
         }
+
         private static void ConsoleHeadlineTextFinish(string name, string surname, int age)
         {
             ConsoleHeadlineText();
@@ -187,3 +187,4 @@ namespace ConsoleAppCert
         }
     }
 }
+

@@ -70,6 +70,8 @@
                 throw new Exception("\aWprowadzona ocenę jest z poza dopuszczalnego zakresu");
             }
         }
+
+
         public abstract Statistics GetStatistics();
         public abstract void PartialResults();
     }
