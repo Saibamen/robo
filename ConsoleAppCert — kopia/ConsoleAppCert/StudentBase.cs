@@ -74,14 +74,25 @@
         public abstract void PartialResults();
         public void PartialResults(List<double> grades)
         {
-            if (grades.Count != 0)
+            Console.WriteLine("oceny cząstkowe: ");
+            foreach (var item in grades)
             {
-                Console.WriteLine("oceny cząstkowe: ");
+                Console.Write($"{item:N2}, ");
+            }
+            Console.WriteLine();
+        }
+
+        public void StudentSaveInMemoryToTxt(List<double> grades)
+        {
+            string fileName = "grades.txt";
+            var fullFileName = $"{Surname}_{Name}_{Age}_{fileName}";
+
+            using (var writer = File.AppendText($"{fullFileName}"))
+            {
                 foreach (var item in grades)
                 {
-                    Console.Write($"{item:N2}, ");
+                    writer.WriteLine(item);
                 }
-                Console.WriteLine();
             }
         }
     }

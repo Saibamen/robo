@@ -34,14 +34,12 @@
             }
             return statistics;
         }
+
         public override void PartialResults()
         {
             PartialResults(grades);
         }
-        public void StudentSaveInMemoryToTxt()
-        {
-            StudentInFile.StudentSaveInMemoryToTxt(grades, $"{Surname}_{Name}_{Age}_grades.txt");
-        }
+
     }
 }
 

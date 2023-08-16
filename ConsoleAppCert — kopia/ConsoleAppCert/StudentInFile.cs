@@ -33,20 +33,15 @@
         public override Statistics GetStatistics()
         {
             var fullFileName = $"{Surname}_{Name}_{Age}_{fileName}";
-            if (File.Exists(fullFileName))
+            using (var reader = File.OpenText(fullFileName))
             {
-                using (var reader = File.OpenText(fullFileName))
+                var line = reader.ReadLine();
+                while (line != null)
                 {
-                    var line = reader.ReadLine();
+                    line = reader.ReadLine();
+                    if ((double.TryParse(line, out double result)) && (result > 0 && result <= 6))
                     {
-                        while (line != null)
-                        {
-                            line = reader.ReadLine();
-                            if ((double.TryParse(line, out double result)) && (result > 0 && result <= 6))
-                            {
-                                grades.Add((double)result);
-                            }
-                        }
+                        grades.Add((double)result);
                     }
                 }
             }
@@ -60,17 +55,6 @@
         public override void PartialResults()
         {
             PartialResults(grades);
-        }
-
-        public static void StudentSaveInMemoryToTxt(List<double> grades, string fullFileName)
-        {
-            using (var writer = File.AppendText($"{fullFileName}"))
-            {
-                foreach (var item in grades)
-                {
-                    writer.WriteLine(item);
-                }
-            }
         }
     }
 }

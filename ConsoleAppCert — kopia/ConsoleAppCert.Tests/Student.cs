@@ -34,7 +34,7 @@ namespace ConsoleAppCert.Test
 
             var result = studentTest.GetStatistics();
 
-            Assert.That((result.Min, result.Max, Math.Round(result.Average,2)), Is.EqualTo((5, 6, 5.45)));
+            Assert.That((result.Min, result.Max, Math.Round(result.Average, 2)), Is.EqualTo((5, 6, 5.45)));
         }
     }
 }
