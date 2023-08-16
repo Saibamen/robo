@@ -38,14 +38,12 @@
                 using (var reader = File.OpenText(fullFileName))
                 {
                     var line = reader.ReadLine();
+                    while (line != null)
                     {
-                        while (line != null)
+                        line = reader.ReadLine();
+                        if ((double.TryParse(line, out double result)) && (result > 0 && result <= 6))
                         {
-                            line = reader.ReadLine();
-                            if ((double.TryParse(line, out double result)) && (result > 0 && result <= 6))
-                            {
-                                grades.Add((double)result);
-                            }
+                            grades.Add((double)result);
                         }
                     }
                 }
@@ -57,11 +55,11 @@
             }
             return statistics;
         }
+
         public override void PartialResults()
         {
             PartialResults(grades);
         }
-
         public static void StudentSaveInMemoryToTxt(List<double> grades, string fullFileName)
         {
             using (var writer = File.AppendText($"{fullFileName}"))
