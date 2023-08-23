@@ -2,7 +2,7 @@
 {
     public class StudentInMemory : StudentBase
     {
-        private List<double> grades = new List<double>();
+        internal List<double> grades = new List<double>();
 
         public override event GradeAddedDelegate GradeAdded;
 
