@@ -113,7 +113,6 @@
             }
             return inputUser[0].ToString().ToUpper() + inputUser[1..].ToLower();
         }
-
         private static void AddGradersToMemory(string name, string surname, int age)
         {
             var student = new StudentInMemory(name, surname, age);
