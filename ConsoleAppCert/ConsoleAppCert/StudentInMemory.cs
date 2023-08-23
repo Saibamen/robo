@@ -2,8 +2,6 @@
 {
     public class StudentInMemory : StudentBase
     {
-        private List<double> grades = new List<double>();
-
         public override event GradeAddedDelegate GradeAdded;
 
         public StudentInMemory(string name, string surname, int age) : base(name, surname, age)
@@ -34,15 +32,6 @@
                 statistics.AddGrade(grade);
             }
             return statistics;
-        }
-
-        public void StudentSaveInMemoryToTxt()
-        {
-            StudentInFile.StudentSaveInMemoryToTxt(grades, $"{Surname}_{Name}_{Age}_grades.txt");
-        }
-        public override void PartialResults()
-        {
-            PartialResults(grades);
         }
     }
 }

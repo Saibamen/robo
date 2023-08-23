@@ -2,7 +2,6 @@
 {
     public class StudentInFile : StudentBase
     {
-        internal List<double> grades = new List<double>();
         public override event GradeAddedDelegate GradeAdded;
         private const string fileName = "grades.txt";
 
@@ -56,12 +55,9 @@
             return statistics;
         }
 
-        public override void PartialResults()
+        public static void SaveGradesInMemoryToFile(List<double> grades, string surnameNameAge)
         {
-            PartialResults(grades);
-        }
-        public static void StudentSaveInMemoryToTxt(List<double> grades, string fullFileName)
-        {
+            var fullFileName = $"{surnameNameAge}_{fileName}";
             using (var writer = File.AppendText($"{fullFileName}"))
             {
                 foreach (var item in grades)

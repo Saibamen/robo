@@ -35,7 +35,6 @@
                         case "1":
                             AddGradersToMemory(name, surname, age);
                             Finish = true;
-
                             break;
                         case "2":
                             AddGradersToFile(name, surname, age);
@@ -92,7 +91,7 @@
 
                 if (!int.TryParse(inputUser, out int age) || (age < 6) || (age > 15))
                 {
-                    ConsoleMessageColor(ConsoleColor.DarkRed, $"\aPodano błędny wiek Ucznia, podaj jeszcze raz");
+                    ConsoleMessageColor(ConsoleColor.DarkRed, $"\aPodano błędny wiek Ucznia (wiek w przedziale 6-15 lat), podaj jeszcze raz");
                 }
                 else break;
             }
@@ -109,7 +108,7 @@
                 if (inputUser == "q" || inputUser == "Q") return "Q";
                 if (inputUser.Length < 3)
                 {
-                    ConsoleMessageColor(ConsoleColor.DarkRed, $"\aPodano za krótkie {text}, podaj jeszcze raz");
+                    ConsoleMessageColor(ConsoleColor.DarkRed, $"\aPodano za krótkie {text.Trim()} Ucznia  - wymagane minimum 3 znaki, podaj jeszcze raz");
                 }
             }
             return inputUser[0].ToString().ToUpper() + inputUser[1..].ToLower();
@@ -126,7 +125,10 @@
             {
                 ConsoleMessageColor(ConsoleColor.DarkRed, "\aCzy zapisać wprowadzone oceny do pliku 'txt'? T - tak");
                 string inputUser = Console.ReadLine().ToUpper().Trim();
-                if (inputUser == "T") student.StudentSaveInMemoryToTxt();
+                if (inputUser == "T")
+                {
+                    StudentInFile.SaveGradesInMemoryToFile(student.grades, $"{surname}_{name}_{age}");
+                }
             }
         }
 

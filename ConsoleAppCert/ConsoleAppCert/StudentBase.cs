@@ -4,6 +4,7 @@
     {
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
         public abstract event GradeAddedDelegate GradeAdded;
+        internal List<double> grades = new List<double>();
 
         public override string Name { get; set; }
         public override string Surname { get; set; }
@@ -36,7 +37,20 @@
 
             if (double.TryParse(grade, out double result) && result >= double.MinValue && result <= double.MaxValue && Age > 9)
             {
-                AddGrade((double)(result + addSmallGrade));
+                switch (result)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                        AddGrade((double)(result + addSmallGrade));
+                        break;
+                    default:
+                        throw new Exception("\aPodano błędną wartość, dopuszczalne oceny: 1-6");
+                        break;
+                }
             }
             else if (Age <= 9)
             {
@@ -61,7 +75,7 @@
                         AddGrade(1 + addSmallGrade);
                         break;
                     default:
-                        throw new Exception("\aPodano błędną ocenę, dopuszczalne wartości?: A-E");
+                        throw new Exception("\aPodano błędną wartość, dopuszczalne oceny: A-E");
                         break;
                 }
             }
@@ -71,13 +85,15 @@
             }
         }
         public abstract Statistics GetStatistics();
-        public abstract void PartialResults();
-        public void PartialResults(List<double> grades)
+        public void PartialResults()
         {
             Console.WriteLine("oceny cząstkowe: ");
+            int index = 0;
             foreach (var item in grades)
             {
-                Console.Write($"{item:N2}, ");
+                if (index == grades.Count - 1) { Console.Write($"{item:N2}"); }
+                else Console.Write($"{item:N2}, ");
+                index++;
             }
             Console.WriteLine();
         }
