@@ -17,7 +17,7 @@
 
         public void AddGrade(string grade)
         {
-            if (grade == "Q" || grade == "Z") { return; }
+            if (grade == "Q" || grade == "Z") return;
 
             double addSmallGrade = 0;
             if (grade.Length == 2)
@@ -80,20 +80,6 @@
                 Console.Write($"{item:N2}, ");
             }
             Console.WriteLine();
-        }
-
-        public void StudentSaveInMemoryToTxt(List<double> grades)
-        {
-            string fileName = "grades.txt";
-            var fullFileName = $"{Surname}_{Name}_{Age}_{fileName}";
-
-            using (var writer = File.AppendText($"{fullFileName}"))
-            {
-                foreach (var item in grades)
-                {
-                    writer.WriteLine(item);
-                }
-            }
         }
     }
 }

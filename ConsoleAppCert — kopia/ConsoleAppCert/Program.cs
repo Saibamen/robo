@@ -122,12 +122,11 @@
             ConsoleMessageColor(ConsoleColor.Magenta, "Oceny są wprowadzane do pamięci komutera (możliwość zapisu po zakończeniu wprowadzania)");
             EnterGrade(student);
             DisplayStatistics(student);
-            ConsoleMessageColor(ConsoleColor.DarkRed, "\aCzy zapisać wprowadzone oceny do pliku 'txt'? T - tak");
-            string inputUser = Console.ReadLine().ToUpper().Trim();
-            if (inputUser == "T")
+            if (student.grades.Count > 0)
             {
-
-                student.StudentSaveInMemoryToTxt(student.grades);
+                ConsoleMessageColor(ConsoleColor.DarkRed, "\aCzy zapisać wprowadzone oceny do pliku 'txt'? T - tak");
+                string inputUser = Console.ReadLine().ToUpper().Trim();
+                if (inputUser == "T") student.StudentSaveInMemoryToTxt();
             }
         }
 
@@ -174,8 +173,11 @@
             var statistics = student.GetStatistics();
             Console.WriteLine();
             ConsoleMessageColor(ConsoleColor.DarkBlue, $"Wyniki dla: {student.Name} {student.Surname} lat: {student.Age}");
-            student.PartialResults();
-            if (statistics.Count > 0) ConsoleMessageColor(ConsoleColor.DarkBlue, $"\tMin: {statistics.Min:N2} \tMax: {statistics.Max:N2} \tŚrednia: {statistics.Average:N2} ({statistics.Sum}/{statistics.Count}), \tOgólna ocena: {statistics.AverageLetter}");
+            if (statistics.Count > 0)
+            {
+                student.PartialResults();
+                ConsoleMessageColor(ConsoleColor.DarkBlue, $"\tMin: {statistics.Min:N2} \tMax: {statistics.Max:N2} \tŚrednia: {statistics.Average:N2} ({statistics.Sum}/{statistics.Count}), \tOgólna ocena: {statistics.AverageLetter}");
+            }
             else ConsoleMessageColor(ConsoleColor.DarkRed, "\a\tBrak wyników do wyświetlenia");
             Console.WriteLine();
             Console.WriteLine("zakończono wyświetlanie statystyk Ucznia, wciśnij dowolny klawisz, aby przejść do wprowadzania kolejnego ucznia");
