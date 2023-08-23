@@ -4,6 +4,7 @@
     {
         public override event GradeAddedDelegate GradeAdded;
 
+
         public StudentInMemory(string name, string surname, int age) : base(name, surname, age)
         {
         }
