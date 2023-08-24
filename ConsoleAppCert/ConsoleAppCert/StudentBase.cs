@@ -45,7 +45,6 @@
                         break;
                     default:
                         throw new Exception("\aPodano błędną wartość, dopuszczalne oceny: 1-6");
-                        break;
                 }
             }
             else if (Age <= 9)
@@ -72,7 +71,6 @@
                         break;
                     default:
                         throw new Exception("\aPodano błędną wartość, dopuszczalne oceny: A-E");
-                        break;
                 }
             }
             else
